@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Todoodle
+A simple and intuitive to-do list application.
 
-## Getting Started
+## Prerequisites
+Docker or Podman installed on your machine.
 
-First, run the development server:
-
+## Running Todoodle with Docker or Podman
+### Building the Docker Image
+Navigate to the root directory of the project where the Dockerfile is located.
+For Docker:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker build -t todoodle .
 ```
+For Podman:
+```bash
+podman build -t todoodle .
+```
+### Running the Container
+For Docker:
+```bash
+docker run -p 3000:3000 todoodle
+```
+For Podman:
+```bash
+podman run -p 3000:3000 todoodle
+```
+This command maps port 3000 of the container to port 3000 on your host machine. Adjust the ports if your
+application uses a different port.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Accessing the Application
+Open your web browser and navigate to:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You should now see the Todoodle application running.
 
-## Learn More
+## Additional Docker Commands
+### Listing Running Containers
+For Docker:
+```bash
+docker ps
+```
+For Podman:
+```bash
+podman ps
+```
+### Stopping the Container
+First, find the Container ID using the `ps` command above, then stop it using:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For Docker:
+```bash
+docker stop <CONTAINER_ID>
+```
+For Podman:
+```bash
+podman stop <CONTAINER_ID>
+```
+### Removing Unused Images
+For Docker:
+```bash
+docker image prune
+```
+For Podman:
+```bash
+podman image prune
+```
+```
